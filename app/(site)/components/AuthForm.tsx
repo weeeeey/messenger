@@ -10,6 +10,7 @@ import AuthSocialButton from './AuthSocialButton';
 import React, { useCallback, useEffect, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { BsGithub, BsGoogle } from 'react-icons/bs';
+import { signIn } from 'next-auth/react';
 
 type Variant = 'LOGIN' | 'REGISTER';
 
@@ -46,15 +47,41 @@ const AuthForm = () => {
                 })
                 .catch((e) => {
                     toast.error('Invalid Info');
+                })
+                .finally(() => {
+                    setIsLoading(false);
                 });
         }
         if (variant === 'LOGIN') {
             // NextAuth SignIn
+            signIn('credentials', {
+                ...data,
+                redirect: false,
+            })
+                .then((callback) => {
+                    if (callback?.error) {
+                        toast.error('Invalid credentials');
+                    }
+                    if (callback?.ok && !callback.error) {
+                        toast.success('Logged in!');
+                    }
+                })
+                .finally(() => setIsLoading(false));
         }
     };
 
     const socialAction = (action: string) => {
         setIsLoading(true);
+        signIn(action, { redirect: false })
+            .then((callback) => {
+                if (callback?.error) {
+                    toast.error('invalid credentials');
+                }
+                if (callback?.ok && !callback.error) {
+                    toast.success('Logged in!');
+                }
+            })
+            .finally(() => setIsLoading(false));
         // NextAuth social signin
     };
 
@@ -111,7 +138,7 @@ const AuthForm = () => {
                             icon={BsGithub}
                         />
                         <AuthSocialButton
-                            onClick={() => socialAction('github')}
+                            onClick={() => socialAction('google')}
                             icon={BsGoogle}
                         />
                     </div>
