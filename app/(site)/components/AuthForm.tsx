@@ -1,4 +1,8 @@
 'use client';
+
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
+
 import Button from '@/app/components/Button';
 import Input from '@/app/components/inputs/Input';
 import AuthSocialButton from './AuthSocialButton';
@@ -35,7 +39,14 @@ const AuthForm = () => {
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
         if (variant === 'REGISTER') {
-            // Axios Register
+            axios
+                .post('/api/register', data)
+                .then(() => {
+                    toast.success('Success Register');
+                })
+                .catch((e) => {
+                    toast.error('Invalid Info');
+                });
         }
         if (variant === 'LOGIN') {
             // NextAuth SignIn
