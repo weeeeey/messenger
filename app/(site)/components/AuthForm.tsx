@@ -12,15 +12,6 @@ type Variant = 'LOGIN' | 'REGISTER';
 const AuthForm = () => {
     const [variant, setVariant] = useState<Variant>('LOGIN');
     const [isLoading, setIsLoading] = useState(false);
-
-    const toggleVariant = useCallback(() => {
-        if (variant === 'LOGIN') {
-            setVariant('REGISTER');
-        } else {
-            setVariant('LOGIN');
-        }
-    }, [variant]);
-
     const {
         register,
         handleSubmit,
@@ -32,6 +23,15 @@ const AuthForm = () => {
             password: '',
         },
     });
+
+    const toggleVariant = useCallback(() => {
+        if (variant === 'LOGIN') {
+            setVariant('REGISTER');
+        } else {
+            setVariant('LOGIN');
+        }
+    }, [variant]);
+
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
         if (variant === 'REGISTER') {
@@ -41,6 +41,7 @@ const AuthForm = () => {
             // NextAuth SignIn
         }
     };
+
     const socialAction = (action: string) => {
         setIsLoading(true);
         // NextAuth social signin
