@@ -5,10 +5,5 @@ export default function HomeLayout({
 }: {
     children: React.ReactNode;
 }) {
-    return (
-        <div className="h-full">
-            <List />
-            {children}
-        </div>
-    );
+    return <div className="h-full">{children}</div>;
 }
