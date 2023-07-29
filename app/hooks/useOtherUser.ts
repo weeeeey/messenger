@@ -7,12 +7,12 @@ const useOtherUser = (conversation: FullConversationType) => {
     const session = useSession();
 
     const otherUser = useMemo(() => {
-        const currentUserEmail = session.data?.user?.email;
-        const otherUser = conversation?.users.filter(
+        const currentUserEmail = session?.data?.user?.email;
+        const otherUser = conversation.users.filter(
             (user) => user.email !== currentUserEmail
         );
-        return otherUser;
-    }, [conversation, session.data?.user]);
+        return otherUser[0];
+    }, [conversation.users, session.data?.user?.email]);
 
     return otherUser;
 };
