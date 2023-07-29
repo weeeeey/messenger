@@ -75,7 +75,6 @@ export async function POST(requset: Request) {
                 users: true,
             },
         });
-
         return NextResponse.json(newConversation);
     } catch (error) {
         return new NextResponse('Internal Error conversation', { status: 500 });
