@@ -42,6 +42,7 @@ const Input = ({
     required,
     type,
 }: InputProps) => {
+    const { maxLength, minLength, pattern } = reg[id];
     return (
         <div>
             <label
@@ -64,7 +65,12 @@ const Input = ({
                         errors[id] && 'focus:ring-rose-500',
                         disabled && 'opacity-50 cursor-default'
                     )}
-                    {...register(id)}
+                    {...register(id, {
+                        required,
+                        maxLength,
+                        minLength,
+                        pattern,
+                    })}
                 />
             </div>
         </div>

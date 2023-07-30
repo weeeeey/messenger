@@ -5,7 +5,6 @@ import { format } from 'date-fns';
 import clsx from 'clsx';
 
 import { FullConversationType } from '@/app/types';
-import { Conversation, User, Message } from '@prisma/client';
 import useOtherUser from '@/app/hooks/useOtherUser';
 import { useRouter } from 'next/navigation';
 import Avatar from '@/app/components/Avatar';
