@@ -6,9 +6,27 @@ import {
     useForm,
 } from 'react-hook-form';
 
+const reg = {
+    name: {
+        pattern: /^[a-zA-Z]+$/,
+        minLength: 2,
+        maxLength: 8,
+    },
+    email: {
+        pattern: /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/,
+        minLength: 4,
+        maxLength: 30,
+    },
+    password: {
+        pattern:
+            /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]{8,16}$/,
+        minLength: 8,
+        maxLength: 15,
+    },
+};
 interface InputProps {
     label: string;
-    id: string;
+    id: 'name' | 'email' | 'password';
     type?: string;
     required?: boolean;
     register: UseFormRegister<FieldValues>;
@@ -46,7 +64,7 @@ const Input = ({
                         errors[id] && 'focus:ring-rose-500',
                         disabled && 'opacity-50 cursor-default'
                     )}
-                    {...register(id, { required })}
+                    {...register(id)}
                 />
             </div>
         </div>
