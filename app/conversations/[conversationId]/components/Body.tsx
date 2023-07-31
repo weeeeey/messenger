@@ -3,7 +3,7 @@
 import useConversation from '@/app/hooks/useConversation';
 import { FullMessageType } from '@/app/types';
 import React, { useEffect, useRef, useState } from 'react';
-import MessageBox from '../../../(site)/components/MessageBox';
+import MessageBox from './MessageBox';
 import axios from 'axios';
 
 interface BodyProps {

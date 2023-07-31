@@ -4,6 +4,7 @@ import EmptyState from '@/app/components/EmptyState';
 import Header from './components/Header';
 import Body from './components/Body';
 import Form from './components/Form';
+import Modal from './components/Modal';
 
 interface IPrams {
     conversationId: string;
@@ -12,6 +13,7 @@ interface IPrams {
 const ConversationId = async ({ params }: { params: IPrams }) => {
     const consversation = await getConversationById(params.conversationId);
     const messages = await getMessages(params.conversationId);
+
     if (!consversation) {
         return (
             <div className="lg:pl-80 h-full">
