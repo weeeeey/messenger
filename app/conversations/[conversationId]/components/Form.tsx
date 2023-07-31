@@ -17,16 +17,23 @@ const Form = () => {
     } = useForm<FieldValues>({
         defaultValues: {
             message: '',
+            image: '',
         },
     });
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setValue('message', '', { shouldValidate: true });
-        axios.post('/api/message', {
-            ...data,
-            conversationId,
-        });
+        setValue('image', '', { shouldValidate: true });
+        axios
+            .post('/api/messages', {
+                ...data,
+                conversationId,
+            })
+            .then((res) => {
+                console.log(res);
+            });
     };
+
     return (
         <div className="py-4 px-4 bg-white border-t flex flex-row items-center gap-2 lg:gap-4 w-full">
             <HiPhoto size={30} className="text-sky-500" />
