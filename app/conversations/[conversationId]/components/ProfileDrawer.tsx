@@ -24,7 +24,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
     onClose,
     data,
 }) => {
-    const [confirmOpen, setConfirmOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const otherUser = useOtherUser(data);
 
     const joinedDate = useMemo(() => {
@@ -49,9 +49,10 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
     return (
         <>
             <ConfirmModal
-                isOpen={confirmOpen}
-                onClose={() => setConfirmOpen(false)}
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
             />
+
             <Transition.Root show={isOpen} as={Fragment}>
                 <Dialog as="div" className="relative z-50" onClose={onClose}>
                     <Transition.Child
@@ -121,7 +122,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                     <div className="flex gap-10 my-8">
                                                         <div
                                                             onClick={() =>
-                                                                setConfirmOpen(
+                                                                setIsModalOpen(
                                                                     true
                                                                 )
                                                             }
