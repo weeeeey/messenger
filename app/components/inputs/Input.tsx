@@ -12,6 +12,11 @@ const reg = {
         minLength: 2,
         maxLength: 8,
     },
+    conversationName: {
+        pattern: /^[\s\S]*$/,
+        minLength: 2,
+        maxLength: 8,
+    },
     email: {
         pattern: /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/,
         minLength: 4,
@@ -26,7 +31,7 @@ const reg = {
 };
 interface InputProps {
     label: string;
-    id: 'name' | 'email' | 'password';
+    id: 'name' | 'email' | 'password' | 'conversationName';
     type?: string;
     required?: boolean;
     register: UseFormRegister<FieldValues>;

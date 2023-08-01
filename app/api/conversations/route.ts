@@ -6,19 +6,19 @@ export async function POST(requset: Request) {
     try {
         const currentUser = await getCurrentUser();
         const body = await requset.json();
-        const { userId, isGroup, members, name } = body;
+        const { userId, isGroup, members, conversationName } = body;
 
         if (!currentUser?.id || !currentUser.email) {
             return new NextResponse('Unauthorized account', { status: 401 });
         }
 
-        if (isGroup && (!members || members.length < 2 || !name)) {
+        if (isGroup && (!members || members.length < 2 || !conversationName)) {
             return new NextResponse('Invalid data', { status: 400 });
         }
         if (isGroup) {
             const newConversation = await prisma.conversation.create({
                 data: {
-                    name,
+                    name: conversationName,
                     isGroup,
                     users: {
                         connect: [
@@ -60,6 +60,7 @@ export async function POST(requset: Request) {
 
         const newConversation = await prisma.conversation.create({
             data: {
+                name: conversationName,
                 users: {
                     connect: [
                         {

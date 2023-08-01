@@ -19,6 +19,7 @@ const UserBox = ({ data }: UserBoxProps) => {
         setIsLoading(true);
         axios
             .post(`/api/conversations`, {
+                conversationName: data.name,
                 userId: data.id,
             })
             .then((res) => {

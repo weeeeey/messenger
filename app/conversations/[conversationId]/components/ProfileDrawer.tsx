@@ -133,9 +133,6 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                                     size={20}
                                                                 />
                                                             </div>
-                                                            <div className="text-sm font-light text-neutral-600">
-                                                                Delete
-                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div className="w-full pb-5 pt-5 sm:px-0 sm:pt-0">

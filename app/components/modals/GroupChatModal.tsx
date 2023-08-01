@@ -29,7 +29,7 @@ const GroupChatModal = ({ onClose, isOpen, users }: GroupChatModalProps) => {
         formState: { errors },
     } = useForm<FieldValues>({
         defaultValues: {
-            name: '',
+            conversationName: '',
             members: [],
         },
     });
@@ -67,8 +67,8 @@ const GroupChatModal = ({ onClose, isOpen, users }: GroupChatModalProps) => {
                                 <div className="mt-10 flex flex-col gap-y-8 ">
                                     <Input
                                         register={register}
-                                        label="Name"
-                                        id="name"
+                                        label="conversationName"
+                                        id="conversationName"
                                         disabled={isLoading}
                                         required
                                         errors={errors}
@@ -91,11 +91,7 @@ const GroupChatModal = ({ onClose, isOpen, users }: GroupChatModalProps) => {
                             </p>
                         </div>
                     </div>
-                    <div
-                        className="
-                    mt-6 flex items-center justify-end gap-x-6
-                    "
-                    >
+                    <div className="mt-6 flex items-center justify-end gap-x-6">
                         <Button
                             disabled={isLoading}
                             onClick={onClose}

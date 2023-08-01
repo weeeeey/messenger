@@ -8,6 +8,7 @@ import { FullConversationType } from '@/app/types';
 import useOtherUser from '@/app/hooks/useOtherUser';
 import { useRouter } from 'next/navigation';
 import Avatar from '@/app/components/Avatar';
+import AvatarGroup from '@/app/components/AvatarGroup';
 
 interface ConversationBoxProps {
     data: FullConversationType;
@@ -62,7 +63,12 @@ const ConversationBox = ({ data, seleted }: ConversationBoxProps) => {
                 seleted ? 'bg-neutral-100' : 'bg-white'
             )}
         >
-            <Avatar user={otherUser} />
+            {data.isGroup ? (
+                <AvatarGroup users={data.users} />
+            ) : (
+                <Avatar user={otherUser} />
+            )}
+
             <div className="min-w-0 flex-1">
                 <div className="focus:outline-none">
                     <div className="flex flex-row justify-between items-center mb-1">
