@@ -39,7 +39,7 @@ const ConversationList = ({ initialItems, users }: ConversationListProps) => {
         pusherClient.subscribe(pusherkey);
         const newHandler = (conversation: FullConversationType) => {
             setItems((current) => {
-                if ((find(current), { id: conversation.id })) {
+                if (find(current, { id: conversation.id })) {
                     return current;
                 }
                 return [conversation, ...current];
