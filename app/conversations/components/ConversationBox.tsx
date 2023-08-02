@@ -55,6 +55,7 @@ const ConversationBox = ({ data, seleted }: ConversationBoxProps) => {
         }
         return 'Started a conversation';
     }, [lastMessage]);
+
     return (
         <div
             onClick={handleClick}
@@ -75,14 +76,9 @@ const ConversationBox = ({ data, seleted }: ConversationBoxProps) => {
                         <p className="text-sm font-medium text-gray-900 ">
                             {data.name || otherUser.name}
                         </p>
-                        {/* {lastMessage?.createdAt && (
+                        {lastMessage?.createdAt && (
                             <p className="text-xs text-gray-400 font-light">
                                 {format(new Date(lastMessage.createdAt), 'p')}
-                            </p>
-                        )} */}
-                        {true && (
-                            <p className="text-xs text-gray-400 font-light">
-                                {format(new Date(), 'p')}
                             </p>
                         )}
                     </div>

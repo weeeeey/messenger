@@ -43,9 +43,10 @@ const GroupChatModal = ({ onClose, isOpen, users }: GroupChatModalProps) => {
                 ...data,
                 isGroup: true,
             })
-            .then(() => {
-                router.refresh();
+            .then((res) => {
                 onClose();
+                router.push(`/conversations/${res.data.id}`);
+                router.refresh();
             })
             .catch(() => {
                 toast.error('Something went wrong');

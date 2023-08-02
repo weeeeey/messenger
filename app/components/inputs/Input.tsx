@@ -14,8 +14,8 @@ const reg = {
     },
     conversationName: {
         pattern: /^[\s\S]*$/,
-        minLength: 2,
-        maxLength: 8,
+        minLength: 1,
+        maxLength: 30,
     },
     email: {
         pattern: /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/,
