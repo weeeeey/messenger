@@ -10,17 +10,17 @@ const reg = {
     name: {
         pattern: /^[a-zA-Z]+$/,
         minLength: 2,
-        maxLength: 8,
+        maxLength: 30,
     },
     conversationName: {
         pattern: /^[\s\S]*$/,
         minLength: 1,
-        maxLength: 30,
+        maxLength: 300,
     },
     email: {
         pattern: /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/,
         minLength: 4,
-        maxLength: 30,
+        maxLength: 50,
     },
     password: {
         pattern:
